@@ -16,11 +16,6 @@
 				<form action="/user/register" method="POST" enctype="multipart/form-data">
 					<div class="row product-detail">
 						<div class="col-12">
-							<% errors.forEach(error => { %>
-								<p><%= errors[0].msg %> </p>
-							<% }) %>
-						</div>
-						<div class="col-12">
 							<label for="email" class="form-label">Email: *</label>
 							<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="">
 						</div>
