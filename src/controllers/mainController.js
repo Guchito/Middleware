@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const pathProductsJSON = path.resolve(__dirname + '/../database/products.json');
+const pathProductsJSON = path.resolve(__dirname + '/../data/products.json');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {

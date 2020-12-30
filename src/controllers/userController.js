@@ -1,26 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const bcryptjs = require('bcryptjs');
+const helper = require('../helpers/helpers')
+
 const {validationResult} = require('express-validator');
-
-const file = path.join(__dirname, '../data/users.json');
-
-function getAllUsers() {
-	return JSON.parse(fs.readFileSync(file, 'utf-8'));
-}
-
-function generateNewId() {
-	const users = getAllUsers();
-	return users.pop().id + 1;
-}
-
-function writeUser(user) {
-	const users = getAllUsers();
-	const usersToSave = [...users, user];
-	const userToJson = JSON.stringify(usersToSave, null, " ");
-	fs.writeFileSync(file, userToJson);
-}
-
+const bcrypt = require('bcryptjs');
 
 
 module.exports = {
@@ -28,14 +9,19 @@ module.exports = {
         return res.render('user/user-register-form');
     },
     processRegister: (req, res) => {
-        let errors = validationResult(req);
-        console.log(errors);
+        const errors = validationResult(req);
         if (!errors.isEmpty()){
-            return res.render('user/user-register-form', {errors: errors.errors})
+            return res.render('user/user-register-form', {errors:errors.mapped(), email: req.body.email}) // me lo manda mappeado y lo puedo encontrar errors.email.msg, etc
         }
-        const users = getAllUsers();
+        const user = {
+            id: helper.generateNewId(),
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            avatar: req.file.filename   
+        }
+        helper.writeUser(user);
+        return res.redirect('/')
 
-        return res.send('Do the magic');
     },
     showLogin: (req, res) => {
         // Do the magic
