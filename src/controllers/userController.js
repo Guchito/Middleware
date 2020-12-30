@@ -11,17 +11,16 @@ module.exports = {
     processRegister: (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()){
-            return res.render('user/user-register-form', {errors:errors.errors})
-        }else{
-            const user = {
-                id: helper.generateNewId(),
-                email: req.body.email,
-                password: req.body.password,
-                avatar: req.files[0].filename   
-            }
-            helper.writeUser(user);
-            return res.redirect('/')
+            return res.render('user/user-register-form', {errors:errors.mapped(), email: req.body.email}) // me lo manda mappeado y lo puedo encontrar errors.email.msg, etc
         }
+        const user = {
+            id: helper.generateNewId(),
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            avatar: req.file.filename   
+        }
+        helper.writeUser(user);
+        return res.redirect('/')
 
     },
     showLogin: (req, res) => {

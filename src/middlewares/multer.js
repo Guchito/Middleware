@@ -1,22 +1,28 @@
-const multer = require('multer');
+const multer = require('multer')
 const path = require('path');
 
-module.exports = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, __dirname + '/../../public/img/users')
-    },
-    filename: function (req, file, cb) {
-      cb(null, Date.now() + '-' + path.extname(file.originalname))
-    },
-    
-  })
-  fileFilter: (req, file, cb) => {
-        const extensions = ['.jpg', '.jpeg', '.png'];
-        const ok = extensions.includes(path.extname(file.originalname));
+    cb(null, path.join('public/images/users'))
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  }
+})
 
-        if(!ok){
-            req.files = [...req.files, file];
-        }
+module.exports = multer({ 
+    storage,
 
-        cb(null, ok);
+    fileFilter: (req, file, cb) => {
+		
+      const aceptedExtensions = ['.jpg', '.jpeg', '.png'];
+      const extension = path.extname(file.originalname)
+
+
+      if(!aceptedExtensions.includes(extension)){
+          req.file = file;
+      }
+      cb(null, aceptedExtensions.includes(extension));
     }
+
+})

@@ -4,5 +4,11 @@
   "email": "guchi@dh.com",
   "password": "$2a$10$W0r2Ha2HHkYmNZ02CNZ73eptF/ZAZqimBGDRmQKwGX6PUJTLXkyUa",
   "avatar": "1607034417440 - 865098.jpg"
+ },
+ {
+  "id": 2,
+  "email": "a_gaggero@hotmail.com",
+  "password": "$2a$10$gGO0XHKySWT5jIounSzGgee1fWnrjj2NOhIE3HHnoqcZZgEolWbL.",
+  "avatar": "1609286412514New Sunset.jpg"
  }
 ]

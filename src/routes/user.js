@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const multer = require('../middlewares/multer')
 const userController = require('../controllers/userController');
+const validator = require('../middlewares/validator')
 
 // Muestra la vista de registro
 router.get('/register',  userController.showRegister);
 
 // Procesa la vista de registro
-router.post('/register', multer().any() , userController.processRegister);
+router.post('/register', multer.single('avatar') , validator.register , userController.processRegister);
 
 // Muestra la vista de login
 router.get('/login', userController.showLogin);

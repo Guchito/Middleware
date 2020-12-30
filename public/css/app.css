@@ -460,3 +460,10 @@ textarea.form-input {
     margin: auto;
   }
 }
+
+
+/* -------------------- */ 
+.error {
+  font-size: 10px;
+  color: red
+}
