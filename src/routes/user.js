@@ -14,7 +14,7 @@ router.post('/register', multer.single('avatar') , validator.register , userCont
 router.get('/login', userController.showLogin);
 
 // Procesa la vista de login
-router.post('/login', userController.processLogin);
+router.post('/login', validator.login , userController.processLogin);
 
 // Muestra el perfil del usuario
 router.get('/profile', userController.showProfile);
