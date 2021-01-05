@@ -20,15 +20,19 @@ module.exports = {
             avatar: req.file.filename   
         }
         helper.writeUser(user);
-        return res.redirect('/')
+        return res.redirect('/user/login')
 
     },
     showLogin: (req, res) => {
-        // Do the magic
-        return res.send('Do the magic');
+        
+        return res.render('user/user-login-form');
     },
     processLogin: (req, res) => {
-        // Do the magic
+        const errors = validationResult(req);
+        if (!errors.isEmpty()){
+            return res.render('user/user-login-form', {errors:errors.mapped(), email: req.body.email})
+        }
+        
         return res.send('Do the magic');
     },
     showProfile: (req, res) => {
