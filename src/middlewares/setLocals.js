@@ -1,4 +1,4 @@
-const { getAllUsers } = require('../helpers/helpers');
+const getAllUsers = require('../helpers/getAllUsers');
 
 module.exports = (req, res, next) => {
     res.locals.user = false;
