@@ -2,6 +2,7 @@ const helper = require('../helpers/helpers')
 
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
+const { userExist, getAllUsers } = require('../helpers/helpers');
 
 
 module.exports = {
@@ -32,6 +33,11 @@ module.exports = {
         if (!errors.isEmpty()){
             return res.render('user/user-login-form', {errors:errors.mapped(), email: req.body.email})
         }
+        req.session.user = req.body.email;
+
+        if (req.body.remember == 'on'){
+            res.cookie('user', req.body.email, { maxAge: 1000 * 60 * 60 * 24 });
+        }        
         
         return res.redirect('/');
     },
@@ -39,10 +45,12 @@ module.exports = {
         return res.render('user/profile');
     },
     logout: (req, res) => {
-        // Do the magic
+        if(req.cookies.user){
+            res.clearCookie('user');
+        }
+        req.session.destroy();
+        
         return res.redirect('/');
     }
-
+    
 }
-
-// A ver

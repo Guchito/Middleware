@@ -1,7 +1,7 @@
 const {check, body} = require('express-validator');
 const {userExist} = require('../helpers/helpers');
 const path = require('path');
-
+const bcrypt = require('bcryptjs');
 
 module.exports = {
     register:  
@@ -36,9 +36,10 @@ module.exports = {
         check('email').notEmpty().withMessage('El campo email es obligatorio').bail()
         .isEmail().withMessage('Ingresa un mail valido').bail(),
         body('email').custom((value, {req})=>{
-            if(userExist()){
-                return bcrypt.compareSync(req.body.password, userExist().password);
-            } else {
+            if(userExist(value)){
+                if(bcrypt.compareSync(req.body.password, userExist(value).password)){
+                    return true;
+                }
                 return false;
             }
         }).withMessage('Mail o contraseña incorrectos').bail(),
