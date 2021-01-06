@@ -1,7 +1,8 @@
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
-const generateNewId = require('../helpers/generateNewId')
-const writeUser = require('../helpers/writeUser')
+const generateNewId = require('../helpers/generateNewId');
+const writeUser = require('../helpers/writeUser');
+const getAllUsers = require('../helpers/getAllUsers');
 
 
 module.exports = {
@@ -32,8 +33,9 @@ module.exports = {
         if (!errors.isEmpty()){
             return res.render('user/user-login-form', {errors:errors.mapped(), email: req.body.email})
         }
-        req.session.user = req.body.email;
-
+        req.session.user = getAllUsers().find(user => user.email == req.body.email);
+        
+        
         if (req.body.remember == 'on'){
             res.cookie('user', req.body.email, { maxAge: 1000 * 60 * 60 * 24 });
         }        
