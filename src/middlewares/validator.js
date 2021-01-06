@@ -1,5 +1,5 @@
 const {check, body} = require('express-validator');
-const {userExist} = require('../helpers/helpers');
+const userExist = require('../helpers/userExist');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 

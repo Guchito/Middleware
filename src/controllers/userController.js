@@ -1,8 +1,7 @@
-const helper = require('../helpers/helpers')
-
 const {validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
-const { userExist, getAllUsers } = require('../helpers/helpers');
+const generateNewId = require('../helpers/generateNewId')
+const writeUser = require('../helpers/writeUser')
 
 
 module.exports = {
@@ -15,12 +14,12 @@ module.exports = {
             return res.render('user/user-register-form', {errors:errors.mapped(), email: req.body.email}) // me lo manda mappeado y lo puedo encontrar errors.email.msg, etc
         }
         const user = {
-            id: helper.generateNewId(),
+            id: generateNewId(),
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 10),
             avatar: req.file.filename   
         }
-        helper.writeUser(user);
+        writeUser(user);
         return res.redirect('/user/login')
 
     },
