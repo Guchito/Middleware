@@ -18,10 +18,10 @@
 						<div class="col-12">
 							<label for="email" class="form-label">Email: *</label>
 							<% if(typeof errors != 'undefined') { %> 
-								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value= "<%= email %>">
+								<input type="email" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value= "<%= email %>">
 								<p class= "error"><%= typeof errors.email == 'undefined' ? '' : errors.email.msg %></p>
 							<% } else {%>
-								<input type="text" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="">
+								<input type="email" id="email" name="email" placeholder="Ej: example@example.com" class="form-input" value="">
 							<% } %>
 						</div>
 						<div class="col-12 row">

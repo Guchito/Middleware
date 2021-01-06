@@ -8,7 +8,7 @@ module.exports = {
     [
         check('email').notEmpty().withMessage('El e-mail es obligatorio').bail()
         .isEmail().withMessage('Ingresa un mail valido').bail(),
-        body('email').custom( value => { !userExist(value)}).withMessage('Usuario ya registrado').bail(),
+        body('email').custom( value => { return !userExist(value)}).withMessage('Usuario ya registrado').bail(),
 
         check('password').notEmpty().withMessage('La contraseña es obligatoria').bail()
         .isLength({min: 6}).withMessage('La contraseña debe tener al menos 6 caracteres').bail(),

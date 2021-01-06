@@ -10,5 +10,11 @@
   "email": "a_gaggero@hotmail.com",
   "password": "$2a$10$gGO0XHKySWT5jIounSzGgee1fWnrjj2NOhIE3HHnoqcZZgEolWbL.",
   "avatar": "1609286412514New Sunset.jpg"
+ },
+ {
+  "id": 3,
+  "email": "hola@hola.com",
+  "password": "$2a$10$PcLbgYCkSQDodZyxb31J7e8ULZlBRcoxm.GOXeh9PJri2eekkKir2",
+  "avatar": "1609942149314-Gonza.png"
  }
 ]

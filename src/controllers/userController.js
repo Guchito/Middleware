@@ -33,7 +33,7 @@ module.exports = {
             return res.render('user/user-login-form', {errors:errors.mapped(), email: req.body.email})
         }
         
-        return res.send('Do the magic');
+        return res.redirect('/');
     },
     showProfile: (req, res) => {
         return res.render('user/profile');
