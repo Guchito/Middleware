@@ -6,6 +6,8 @@ const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const methodOverride = require('method-override'); // Pasar poder usar los métodos PUT y DELETE
+const rememberMe = require('./middlewares/rememberMe')
+const setLocals = require('./middlewares/setLocals')
 
 
 // ************ express() - (don't touch) ************
@@ -24,6 +26,8 @@ app.use(session({
   saveUninitialized: true
 }));
 app.use(methodOverride('_method')); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
+app.use(rememberMe);
+app.use(setLocals);
 
 
 

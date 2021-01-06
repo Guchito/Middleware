@@ -10,5 +10,23 @@
   "email": "a_gaggero@hotmail.com",
   "password": "$2a$10$gGO0XHKySWT5jIounSzGgee1fWnrjj2NOhIE3HHnoqcZZgEolWbL.",
   "avatar": "1609286412514New Sunset.jpg"
+ },
+ {
+  "id": 3,
+  "email": "hola@hola.com",
+  "password": "$2a$10$PcLbgYCkSQDodZyxb31J7e8ULZlBRcoxm.GOXeh9PJri2eekkKir2",
+  "avatar": "1609942149314-Gonza.png"
+ },
+ {
+  "id": 4,
+  "email": "agusgaggero@gmail.com",
+  "password": "$2a$10$yV7o7kqEjQPxkX5ZidLqjukZvHofa9TleWiB1izyUB1Bs/M0xTKOC",
+  "avatar": "1609942812302-Gonza.png"
+ },
+ {
+  "id": 5,
+  "email": "alo@alo.com",
+  "password": "$2a$10$CHwGuGqbYLkd0U/zVA48OOQk/Woj2JkDbHEHpy4xTkYjDq0.PstaO",
+  "avatar": "1609961139800-Pola.png"
  }
 ]

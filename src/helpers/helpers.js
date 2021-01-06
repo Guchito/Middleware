@@ -21,8 +21,8 @@ const helper = {
     },
     userExist(value){
         const users = helper.getAllUsers();
-        userExist = users.find(user => user.email == value);
-        return userExist;
+        const userOk = users.find(user => user.email == value);
+        return userOk;
     }
 }
 
